@@ -2,7 +2,7 @@
 
 ## Предпосылки.
 - Docker + Docker Compose.
-- Go 1.24+.
+- Go 1.23+.
 
 ## Запуск инфраструктуры.
 docker compose up --build
@@ -11,18 +11,25 @@ docker compose up --build
 ## Миграции.
 Ручной запуск при необходимости:
 docker exec -it wb-order-service ./migrate up
+При пустой базе автоматически создаётся тестовый заказ (для проверки UI и API).
 
-## Переменные окружения.
-См. .env.example.
+
+## Переменные окружения
+Основная конфигурация хранится в docker-compose.yml.
+
+.env.example — пример для запуска внутри контейнеров.
+.env — может использоваться для локального запуска (go run .).
+
 При необходимости:
 cp .env.example .env
+
 
 ## Запуск сервиса локально.
 go run .
 UI и API поднимутся на http://localhost:8081
 
 ## Отправка тестовых сообщений.
-Producer лежит в cmd/producer и нормально запускается локально.
+Producer использует cmd/producer/.env.local (подхватывается автоматически).
 Примеры:
 go run ./cmd/producer
 go run ./cmd/producer -gen -n 200 -badRate 0.1 -delay 150ms

@@ -21,6 +21,7 @@ import (
 )
 
 func main() {
+
 	brokersEnv := os.Getenv("KAFKA_BROKERS")
 	topic := os.Getenv("KAFKA_TOPIC")
 

@@ -1,5 +1,6 @@
 ﻿# собираем бинарники
-FROM golang:1.24-alpine AS builder
+FROM golang:1.23-alpine AS builder
+
 
 WORKDIR /app
 
@@ -18,7 +19,7 @@ FROM alpine:3.20
 
 WORKDIR /app
 
-# bash + netcat + pg_isready (postgres-client)
+# bash + netcat + pg_isready (постгрес)
 RUN apk add --no-cache ca-certificates bash netcat-openbsd postgresql-client
 
 COPY --from=builder /app/wb-order-service /app/wb-order-service

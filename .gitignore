@@ -1,0 +1,38 @@
+# артефакты сборки
+/bin/
+/build/
+/dist/
+/coverage.out
+
+# бинарники
+*.exe
+*.out
+
+# временные каталоги
+vendor/
+.tmp/
+tmp/
+
+# логи
+*.log
+
+# файлы от IDE
+.vscode/
+.idea/
+*.iml
+*.swp
+*~
+*.suo
+*.user
+*.rsuser
+
+# мусор системы
+.DS_Store
+Thumbs.db
+
+# env-файлы
+.env
+.env.local
+
+# пример оставляем
+!.env.example
