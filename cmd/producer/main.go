@@ -15,12 +15,16 @@ import (
 	"strings"
 	"time"
 
+	"github.com/joho/godotenv"
 	kafka "github.com/segmentio/kafka-go"
 
 	"github.com/Stanislav-Grinevich/wb-order-service-grinevich/internal/models"
 )
 
 func main() {
+	if err := godotenv.Overload("cmd/producer/.env.local"); err != nil {
+		log.Printf("env load error: %v", err)
+	}
 
 	brokersEnv := os.Getenv("KAFKA_BROKERS")
 	topic := os.Getenv("KAFKA_TOPIC")
